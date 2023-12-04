@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>wordlexord</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+        <script defer>
+            document.addEventListener('DOMContentLoaded', () => {
+                fast_form = document.querySelector('#fast_input');
+                fast_form.onsubmit = () => {
+                    data = document.querySelector('#fast_input_input').value;
+                    
+                    payload = "data=" + document.querySelector('#fast_input_input').value;
+                    const request = new XMLHttpRequest();
+                    request.open('POST', '/api/fast_convert/');
+
+                    request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                    request.onload = () => {
+                        const data = JSON.parse(request.responseText);
+                        console.log('resp:' + data.msg + data.success)
+                        
+                        if (data.success) {
+                            document.querySelector('#fast_result').innerHTML = data.msg;
+                            document.querySelector('#fast_result').style.color = '#ffdc88';
+                            document.querySelector('#fast_result').style.background = null;
+                            document.querySelector('#fast_result').style.padding = '0';
+
+
+                        } else {
+                            document.querySelector('#fast_result').innerHTML = data.msg;
+                            document.querySelector('#fast_result').style.color = 'white';
+                            document.querySelector('#fast_result').style.background = 'black';
+                            document.querySelector('#fast_result').style.padding = '10px';
+
+                        }
+
+                        document.querySelector('#fast_result').innerHTML = data.msg;
+                    }
+                    request.send(payload);
+                    return false;
+                };
+            });
+            
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <a href="/" class="primary centered flex-50 toplink animated">wordlexord</a>
+            <a href="/guide" class="maincolor centered flex-50 toplink animated">гайд</a>
+
+            <a href="https://t.me/wordlexord_bot" class="maincolor centered flex-50 toplink animated">tg bot</a>
+
+            <a href="https://github.com/lindy2076/words-serial-number" class="maincolor centered flex-50 toplink animated">github</a>
+        </div>
+
+        <div class="attention">
+            <div style="background-color: white; width:fit-content;">Это webview интерфейс пакета <a class="accent" target="_blank" href="https://pypi.org/project/wordlexord/0.0.2/">wordlexord</a>.</div>
+        </div>
+        <div class="attention animated">
+            <div style="width:fit-content;">
+                <p>
+                    перевод слов в порядковые номера и обратно (в зависимости от алфавита):
+                </p>
+                
+                <div style="background-color: white; width: fit-content;">
+                    lol -> 8514; 18091001 -> amogus
+                </div>
+            </div>
+        </div>
+        <div class="section bg2 animated">
+            <div class="word_input" style="width: 100%;">
+                <div class="">Быстрая конвертация:</div>
+                <form id="fast_input"></form>
+                    <input 
+                        id="fast_input_input"
+                        type="text"
+                        name="fast_input_input" 
+                        placeholder="рул всем привет" 
+                        form="fast_input"
+                        class="input"
+                    />
+                <div class="result">Результат:</div>
+                <div class="result_field" id="fast_result">128714 687011114</div>
+            </div>
+        </div>
+
+        <div class="section bg3 animated" style="font-size: 30px">
+            первое слово формата <span class="primary">LL</span><span class="secondary">C</span> : language language case, где первые две буквы - кодовое название алфавита, а третья - l(л)/u(у) - ловеркейс/апперкейс
+
+            <p>
+            примеры: <br>
+            <span class="secondary">рул хвала иисусу христу</span>: 27385513 403919460 921841359 <br>
+            <span class="secondary">рул 687011114 128714</span>: привет всем <br>
+            <span class="secondary">enl jesus christ</span>: 4671049 39622902 <br>
+            <span class="secondary">enl 9 221629 201883748</span>: i love python
+            </p>
+
+            Подробнее в <a class="primary" href="/guide">гайде</a>.
+
+        </div>
+
+        <div class="footer">
+            made by <span title="aleksej kosolapov" id="fname">human</span> on earth in 2023
+        </div>
+        
+    </body>
+    
+</html>

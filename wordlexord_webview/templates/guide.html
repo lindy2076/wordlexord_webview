@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <title>wordlexord</title>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet"> 
+    </head>
+    <body>
+        <div class="header">
+            <a href="/" class="primary centered flex-50 toplink animated">wordlexord</a>
+            <a href="/guide" class="maincolor centered flex-50 toplink animated">гайд</a>
+            <a href="https://t.me/wordlexord_bot" class="maincolor centered flex-50 toplink animated">tg bot</a>
+
+            <a href="https://github.com/lindy2076/words-serial-number" class="maincolor centered flex-50 toplink animated">github</a>
+        </div>
+
+        <div class="attention">
+            <div style="background-color: white; width:fit-content;">Это webview интерфейс пакета <a class="accent" target="_blank" href="https://pypi.org/project/wordlexord/0.0.2/">wordlexord</a>.</div>
+        </div>
+
+        <div class="attention">
+            Пронумеруем все слова в выбранном алфавите (например английском): <br>
+            <span class="bg1">
+                a -> 1, b -> 2, ..., x -> 24, y -> 25, z -> 26, <br>
+            </span> 
+            <span class="bg1">
+                aa -> 27, ab -> 28, ac -> 29, ...
+            </span>
+            <p>
+                Тогда у всякого слова будет свой <span class="primary">порядковый номер</span>.
+            </p>
+
+            В стандартном английском алфавите "abcdefghijklmnopqrstuvwxyz" 8514ое слово - <span class="accent">lol</span>. <br>
+            Так же можно получить слово по его порядковому номеру. Порядковый номер слова jesus - <span class="accent">4671049</span>.
+        </div>
+
+        <div class="section bg3 animated">
+            <span class="accent">#1</span>. <span class="primary">Алфавиты</span> <br>
+            <div style="font-size:30px">
+                Сейчас доступно 4 алфавита: <br>
+                <span class="secondary">рул</span> - русский ловеркейс: абвгдеёжзийклмнопрстуфхцчшщъыьэюя <br>
+                <span class="secondary">руу</span> - русский апперкейс АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ<br>
+                <span class="secondary">enl</span> - английский ловеркейс: abcdefghijklmnopqrstuvwxyz <br>
+                <span class="secondary">enu</span> - английский апперкейс: ABCDEFGHIJKLMNOPQRSTUVWXYZ 
+
+                <p>В <a class="accent" href="https://github.com/lindy2076/words-serial-number/tree/main">пакете</a> можно установить любой алфавит.</p>
+            </div>
+
+        </div>
+        <div class="section bg1 animated">
+            <span class="accent">#2</span>. Тулзы <br>
+            <div style="font-size:30px">
+                В пакете доступны разные методы для работы со словами и числами. Подробнее в README <br>
+                
+                <p>
+                    Основной функционал webview: <br>
+                </p>
+
+                <span class="primary">[alphabet] [text]</span> - Если text - набор порядковых номеров в алфавите alphabet, то переводит их в слова, и наоборот, переводит слова с порядковые номера.
+            
+                <p>Некоторые нюансы:</p>
+
+                Если передать текст, не состоящий из чисел, то в нём удалятся все символы, отсутствующие в алфавите.
+                Например, если передать <span class="secondary bg3">руу привет</span>, то ничего не вернётся, т.к. в слове привет нет ни одной заглавной буквы. 
+                Если же передать <span class="secondary bg3">руу Привет!</span>, то вернётся лишь порядковый номер буквы П, т.к. остальные отсутствуют в алфавите из заглавных букв.
+
+            </div> 
+        </div>
+
+        <div class="footer">
+            made by <span title="aleksej kosolapov" id="fname">human</span> on earth in 2023
+        </div>
+        
+    </body>
+    
+</html>
